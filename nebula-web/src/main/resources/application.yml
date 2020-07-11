@@ -1,0 +1,31 @@
+# 项目信息
+nebula:
+  name: nebula
+  version: 1.0.0
+  copyrightYear: 2020
+  # 获取ip地址开关
+  addressEnabled: true
+
+# 服务配置
+server:
+  port: 8088
+  servlet:
+    context-path: /nebula
+
+#spring配置
+spring:
+  # 多配置源
+  profiles:
+    active: mysql
+  # 模板引擎
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    # 禁用缓存
+    cache: false
+  # 启动热部署
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+

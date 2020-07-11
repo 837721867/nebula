@@ -1,0 +1,2 @@
+INSERT INTO sys_role (id, createTime, creator, disables, modifier, modifyTime, code, name, type) SELECT '1', now(), 'admin', '0', 'admin', now(), '000001', '管理', '0' FROM DUAL WHERE NOT EXISTS ( SELECT 1 FROM sys_role WHERE id = '1' );
+INSERT INTO sys_role (id, createTime, creator, disables, modifier, modifyTime, code, name, type) SELECT '2', now(), 'admin', '0', 'admin', now(), '000002', '用户', '1' FROM DUAL WHERE NOT EXISTS ( SELECT 1 FROM sys_role WHERE id = '2' );
