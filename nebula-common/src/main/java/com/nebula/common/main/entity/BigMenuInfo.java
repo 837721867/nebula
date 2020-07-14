@@ -37,6 +37,6 @@ public class BigMenuInfo extends BaseEntity {
     private RoleInfo role;
 
     /** 二级菜单列表 */
-    @OneToMany(mappedBy = "bigMenu")
+    @OneToMany(mappedBy = "bigMenu", cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = SmallMenuInfo.class)
     private Set<SmallMenuInfo> smallMenuInfoSet;
 }

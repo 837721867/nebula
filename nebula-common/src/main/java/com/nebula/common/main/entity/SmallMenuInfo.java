@@ -4,10 +4,7 @@ import com.nebula.common.base.entity.BaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * 描述：星云主界面二级菜单
@@ -35,7 +32,7 @@ public class SmallMenuInfo extends BaseEntity {
     private String address;
 
     /** 上级菜单ID */
-    @ManyToOne(targetEntity = BigMenuInfo.class)
-    @JoinColumn(nullable = false, columnDefinition = " varchar(50) not null comment '上级菜单Id' ")
+    @ManyToOne(targetEntity = BigMenuInfo.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(nullable = false, name = "bigMenu_id", referencedColumnName = "id", columnDefinition = " varchar(50) not null comment '上级菜单Id' ")
     BigMenuInfo bigMenu;
 }
