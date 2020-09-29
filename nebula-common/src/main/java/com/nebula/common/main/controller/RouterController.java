@@ -12,12 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RouterController {
 
-
-    @RequestMapping({"/","","/userLogin"})
-    public String userLogin(){
-        return "user/login";
-    }
-
     @RequestMapping("/main/main")
     public String main(){
         return "main/main";

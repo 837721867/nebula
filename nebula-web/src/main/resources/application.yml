@@ -11,6 +11,9 @@ server:
   port: 8088
   servlet:
     context-path: /nebula
+    # session有效时长1小时
+    session:
+      timeout: PT1H
 
 #spring配置
 spring:
@@ -28,4 +31,6 @@ spring:
     restart:
       # 热部署开关
       enabled: true
+      # 监听目录
+      additional-paths: src/main/java, src/main/resources
 

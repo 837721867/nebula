@@ -45,7 +45,7 @@ let login = function (captchaObj) {
         httpService.ajax('post','/login', param).then(function(res){
             if(res.result){
                 $('.login-tips').html(res.message);
-                location.href = res.routerAddress;
+                location.href = res.data;
             }else{
                 captchaObj.reset();
                 $('.login-tips').html(res.message);

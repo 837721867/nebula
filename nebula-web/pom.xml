@@ -43,6 +43,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <fork>true</fork>
+                    <addResources>true</addResources>
                     <mainClass>com.nebula.web.WebApplication</mainClass>
                 </configuration>
                 <executions>
