@@ -35,18 +35,18 @@ let login = function (captchaObj) {
         }
 
         let param = {
-                    username: $("input[name='userName']").val(),
-                    password: $("input[name='passWord']").val(),
-                    geetest_challenge: result.geetest_challenge,
-                    geetest_validate: result.geetest_validate,
-                    geetest_seccode: result.geetest_seccode
-                }
+            username: $("input[name='userName']").val(),
+            password: $("input[name='passWord']").val(),
+            geetest_challenge: result.geetest_challenge,
+            geetest_validate: result.geetest_validate,
+            geetest_seccode: result.geetest_seccode
+        }
 
-        httpService.ajax('post','/login', param).then(function(res){
-            if(res.result){
+        httpService.ajax('post', '/login', param).then(function (res) {
+            if (res.result) {
                 $('.login-tips').html(res.message);
                 location.href = res.data;
-            }else{
+            } else {
                 captchaObj.reset();
                 $('.login-tips').html(res.message);
             }
@@ -54,7 +54,7 @@ let login = function (captchaObj) {
     });
     $('#submit').click(function () {
         // 调用之前先通过前端表单校验
-        if(checkForm()){
+        if (checkForm()) {
             captchaObj.verify();
         }
     });
@@ -62,26 +62,26 @@ let login = function (captchaObj) {
     $(document).ready(function () {
         $("body").bind('keydown', function (event) {
             if (event.keyCode == 13) {
-                if(checkForm()){
+                if (checkForm()) {
                     captchaObj.verify();
                 }
             }
         });
     });
 
-//用户登录前的表单填写校验
-let checkForm = function (){
-    if($("input[name='userName']").val() == ''){
-        $("input[name='userName']").focus();
-        $('.login-tips').html('登录失败：用户名必填');
-        return false;
+    //用户登录前的表单填写校验
+    let checkForm = function () {
+        if ($("input[name='userName']").val() == '') {
+            $("input[name='userName']").focus();
+            $('.login-tips').html('登录失败：用户名必填');
+            return false;
+        }
+        if ($("input[name='passWord']").val() == '') {
+            $("input[name='passWord']").focus();
+            $('.login-tips').html('登录失败：密码必填');
+            return false;
+        }
+        return true;
     }
-    if($("input[name='passWord']").val() == ''){
-        $("input[name='passWord']").focus();
-        $('.login-tips').html('登录失败：密码必填');
-        return false;
-    }
-    return true;
-}
 
 };
