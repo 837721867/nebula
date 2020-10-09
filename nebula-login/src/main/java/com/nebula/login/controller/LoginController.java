@@ -45,7 +45,7 @@ public class LoginController {
             return ResultUtil.result(false, "密码错误");
         }
         request.getSession().setAttribute("user", userInfo);
-        return ResultUtil.result(true, "main/main","登录成功");
+        return ResultUtil.result(true, "main/","登录成功");
     }
 
 }

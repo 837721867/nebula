@@ -19,24 +19,29 @@ window.httpService = {
         return (localhostPath + projectName);
     },
 
-    /** 请求主体 嵌入ajax */
-    ajax: function(type, url, param){
+
+    /**
+     * 通用请求主体，嵌入ajax
+     * @param url required 根目录已封装
+     * @param data default {}
+     * @returns {jQuery}
+     */
+    ajax: function (url, data) {
         let deffer = $.Deferred();
         $.ajax({
-            type: type,
             url: this.getRootPath() + url,
-            data: param,
+            data: typeof (data) == 'undefined' ? {} : data,
+            dataType: 'json',
             cache: true,
             success: function (res) {
                 deffer.resolve(res);
                 console.log(res);
             },
             error: function (e) {
-                deffer.reject;
+                deffer.reject();
                 console.log(e);
             }
         })
         return deffer.promise();
     }
-
 }
