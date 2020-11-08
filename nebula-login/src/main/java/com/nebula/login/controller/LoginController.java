@@ -1,6 +1,5 @@
 package com.nebula.login.controller;
 
-import com.nebula.common.base.controller.BaseController;
 import com.nebula.common.geetest.VerifyLoginServlet;
 import com.nebula.common.main.entity.UserInfo;
 import com.nebula.common.util.ResultUtil;
