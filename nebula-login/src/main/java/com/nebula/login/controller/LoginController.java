@@ -5,10 +5,13 @@ import com.nebula.common.geetest.VerifyLoginServlet;
 import com.nebula.common.main.entity.UserInfo;
 import com.nebula.common.util.ResultUtil;
 import com.nebula.login.service.LoginService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -19,6 +22,8 @@ import java.io.IOException;
  */
 @Controller
 public class LoginController {
+
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Resource
     private HttpServletRequest request;
@@ -32,20 +37,21 @@ public class LoginController {
         VerifyLoginServlet ver = new VerifyLoginServlet();
         String phone = request.getParameter("username");
         String passWord = request.getParameter("password");
-        if(!ver.doubleVerify(request).get("status").getAsBoolean()){
-            return ResultUtil.result(false,"行为验证失败");
+        if (!ver.doubleVerify(request).get("status").getAsBoolean()) {
+            return ResultUtil.result(false, "行为验证失败");
         }
         // 验证用户是否存在
         UserInfo userInfo = loginService.getUserByPhone(phone);
-        if(StringUtils.isEmpty(userInfo)){
+        if (StringUtils.isEmpty(userInfo)) {
             return ResultUtil.result(false, "该手机号尚未注册");
         }
         // 验证密码是否正确
-        if(!passWord.equals(userInfo.getPassword())){
+        if (!passWord.equals(userInfo.getPassword())) {
             return ResultUtil.result(false, "密码错误");
         }
         request.getSession().setAttribute("user", userInfo);
-        return ResultUtil.result(true, "main/","登录成功");
+        logger.info("用户:" + userInfo.getName() + "登录成功");
+        return ResultUtil.result(true, "main/", "登录成功");
     }
 
 }
