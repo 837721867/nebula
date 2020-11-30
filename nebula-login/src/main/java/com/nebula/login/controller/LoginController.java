@@ -29,9 +29,13 @@ public class LoginController {
     @Resource
     private LoginService loginService;
 
+    @RequestMapping("/login")
+    public String goLogin(){
+        return "user/login";
+    }
 
     @ResponseBody
-    @RequestMapping("/login")
+    @RequestMapping("/login/login")
     public ResultUtil login() throws IOException {
         VerifyLoginServlet ver = new VerifyLoginServlet();
         String phone = request.getParameter("username");

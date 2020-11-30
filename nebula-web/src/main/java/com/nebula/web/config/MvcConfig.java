@@ -1,4 +1,4 @@
-package com.nebula.web.init;
+package com.nebula.web.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * 作者：Marionette
  */
 @Configuration
-public class DefaultViewConfig implements WebMvcConfigurer {
+public class MvcConfig implements WebMvcConfigurer {
 
     /**
      * 设置系统默认访问页面

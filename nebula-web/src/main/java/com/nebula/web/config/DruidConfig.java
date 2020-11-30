@@ -1,4 +1,4 @@
-package com.nebula.web.druid;
+package com.nebula.web.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
@@ -22,37 +22,54 @@ import java.util.Map;
 @Configuration
 public class DruidConfig {
 
-    /** druid监控登录账号 */
+    /**
+     * druid监控登录账号
+     */
     @Value("${spring.datasource.stat-view-servlet.userName}")
     private String userName;
-    /** druid监控登录密码 */
+    /**
+     * druid监控登录密码
+     */
     @Value("${spring.datasource.stat-view-servlet.passWord}")
     private String passWord;
-    /** druid监控根路径 */
+    /**
+     * druid监控根路径
+     */
     @Value("${spring.datasource.stat-view-servlet.url-pattern}")
     private String urlPatch;
-    /** druid监控是否禁用“Reset All”功能 */
+    /**
+     * druid监控是否禁用“Reset All”功能
+     */
     @Value("${spring.datasource.stat-view-servlet.reset-enable}")
     private String resetEnable;
-    /** druid监控过滤规则 */
+    /**
+     * druid监控过滤规则
+     */
     @Value("${spring.datasource.web-stat-filter.url-pattern}")
     private String urlPattern;
-    /** druid监控过滤格式 */
+    /**
+     * druid监控过滤格式
+     */
     @Value("${spring.datasource.web-stat-filter.exclusions}")
     private String exclusions;
-    /** druid监控白名单 */
+    /**
+     * druid监控白名单
+     */
     @Value("${spring.datasource.stat-view-servlet.allow}")
     private String allow;
-    /** druid是否监控单个url调用SQL */
+    /**
+     * druid是否监控单个url调用SQL
+     */
     @Value("${spring.datasource.web-stat-filter.profileEnable}")
     private String profileEnable;
 
 
-
-    /** 定义bean产生Druid数据源 */
+    /**
+     * 定义bean产生Druid数据源
+     */
     @Bean(name = "default_dataDataSource")
     @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource druidDataSource(){
+    public DataSource druidDataSource() {
         return new DruidDataSource();
     }
 
