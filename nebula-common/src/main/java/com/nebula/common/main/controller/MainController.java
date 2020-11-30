@@ -39,9 +39,9 @@ public class MainController {
     public ResultUtil getMenu(){
         List<BigMenuInfo> list =  mainService.getMenu();
         if(list == null || list.isEmpty()){
-            return ResultUtil.result(false,"获取主页菜单失败");
+            return ResultUtil.fail("获取主页菜单失败");
         }
-        return ResultUtil.result(true, list, "获取主页菜单成功");
+        return ResultUtil.success(list, "获取主页菜单成功");
     }
 
 }

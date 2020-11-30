@@ -37,20 +37,20 @@ public class LoginController {
         String phone = request.getParameter("username");
         String passWord = request.getParameter("password");
         if (!ver.doubleVerify(request).get("status").getAsBoolean()) {
-            return ResultUtil.result(false, "行为验证失败");
+            return ResultUtil.fail("行为验证失败");
         }
         // 验证用户是否存在
         UserInfo userInfo = loginService.getUserByPhone(phone);
         if (StringUtils.isEmpty(userInfo)) {
-            return ResultUtil.result(false, "该手机号尚未注册");
+            return ResultUtil.fail("该手机号尚未注册");
         }
         // 验证密码是否正确
         if (!passWord.equals(userInfo.getPassword())) {
-            return ResultUtil.result(false, "密码错误");
+            return ResultUtil.fail("密码错误");
         }
         request.getSession().setAttribute("user", userInfo);
         logger.info("用户:" + userInfo.getName() + "登录成功");
-        return ResultUtil.result(true, "main/", "登录成功");
+        return ResultUtil.success("main/", "登录成功");
     }
 
 }

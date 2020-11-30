@@ -24,9 +24,13 @@ public class ResultUtil<T> implements Serializable {
     private T data;
 
     /** 返回结果信息 */
-    private String message = "成功";
+    private String message;
 
 
+    /**
+     * 构造函数
+     * @param result
+     */
     public ResultUtil(boolean result) {
         this.result = result;
     }
@@ -43,16 +47,37 @@ public class ResultUtil<T> implements Serializable {
     }
 
 
-    public static ResultUtil result(boolean result){
-        return new ResultUtil(result);
+    /**
+     * 成功 静态方法
+     * @return
+     */
+    public static ResultUtil success(){
+        return new ResultUtil(true);
     }
 
-    public static ResultUtil result(boolean result, String message){
-        return new ResultUtil(result, message);
+    public static ResultUtil success(String message){
+        return new ResultUtil(true, message);
     }
 
-    public static ResultUtil result(boolean result, Object data, String message){
-        return new ResultUtil(result, data, message);
+    public static ResultUtil success(Object data, String message){
+        return new ResultUtil(true, data, message);
+    }
+
+
+    /**
+     * 失败静态方法
+     * @return
+     */
+    public static ResultUtil fail(){
+        return new ResultUtil(false);
+    }
+
+    public static ResultUtil fail(String message){
+        return new ResultUtil(false, message);
+    }
+
+    public static ResultUtil fail(Object data, String message){
+        return new ResultUtil(false, data, message);
     }
 
 
