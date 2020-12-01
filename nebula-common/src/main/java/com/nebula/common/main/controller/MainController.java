@@ -25,7 +25,7 @@ public class MainController {
      * 描述：跳转主页
      * @return
      */
-    @RequestMapping("/")
+    @RequestMapping("/main")
     public String main(){
         return "main/main";
     }

@@ -21,18 +21,43 @@ window.httpService = {
 
 
     /**
-     * 通用请求主体，嵌入ajax
+     * get请求参数json
      * @param url required 根目录已封装
      * @param data default {}
      * @returns {jQuery}
      */
-    ajax: function (url, data) {
+    jsonGetAjax: function (url, data) {
         let deffer = $.Deferred();
         $.ajax({
+            type: 'GET',
             url: this.getRootPath() + url,
             data: typeof (data) == 'undefined' ? {} : data,
             dataType: 'json',
             cache: true,
+            success: function (res) {
+                deffer.resolve(res);
+                console.log(res);
+            },
+            error: function (e) {
+                deffer.reject();
+                console.log(e);
+            }
+        })
+        return deffer.promise();
+    },
+
+    /**
+     * post请求参数默认application/x-www-form-urlencoded
+     * @param url required 根目录已封装
+     * @param data default {}
+     * @returns {jQuery}
+     */
+    postAjax: function (url, data) {
+        let deffer = $.Deferred();
+        $.ajax({
+            type: 'POST',
+            url: this.getRootPath() + url,
+            data: typeof (data) == 'undefined' ? {} : data,
             success: function (res) {
                 deffer.resolve(res);
                 console.log(res);

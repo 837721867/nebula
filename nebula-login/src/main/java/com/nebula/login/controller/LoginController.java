@@ -30,21 +30,21 @@ public class LoginController {
     private LoginService loginService;
 
     @RequestMapping("/login")
-    public String goLogin(){
+    public String login(){
         return "user/login";
     }
 
     @ResponseBody
     @RequestMapping("/login/login")
-    public ResultUtil login() throws IOException {
+    public ResultUtil login(String userName, String passWord) throws IOException {
         VerifyLoginServlet ver = new VerifyLoginServlet();
-        String phone = request.getParameter("username");
-        String passWord = request.getParameter("password");
+//        String phone = request.getParameter("username");
+//        String passWord = request.getParameter("password");
         if (!ver.doubleVerify(request).get("status").getAsBoolean()) {
             return ResultUtil.fail("行为验证失败");
         }
         // 验证用户是否存在
-        UserInfo userInfo = loginService.getUserByPhone(phone);
+        UserInfo userInfo = loginService.getUserByPhone(userName);
         if (StringUtils.isEmpty(userInfo)) {
             return ResultUtil.fail("该手机号尚未注册");
         }
@@ -52,9 +52,9 @@ public class LoginController {
         if (!passWord.equals(userInfo.getPassword())) {
             return ResultUtil.fail("密码错误");
         }
-        request.getSession().setAttribute("user", userInfo);
+        request.getSession().setAttribute("userInfo", userInfo);
         logger.info("用户:" + userInfo.getName() + "登录成功");
-        return ResultUtil.success("main/", "登录成功");
+        return ResultUtil.success("main/main", "登录成功");
     }
 
 }

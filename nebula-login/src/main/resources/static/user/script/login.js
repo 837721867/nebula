@@ -15,7 +15,7 @@ layui.use(['jquery', 'layer'], function () {
      * @param captchaObj
      */
     function loadGeeTest() {
-        httpService.ajax('/geeTest/register?t=' + (new Date()).getTime(), {}).then(function (data) {
+        httpService.jsonGetAjax('/geeTest/register?t=' + (new Date()).getTime(), {}).then(function (data) {
             initGeetest({
                 gt: data.gt,
                 challenge: data.challenge,
@@ -43,14 +43,15 @@ layui.use(['jquery', 'layer'], function () {
             }
 
             let param = {
-                username: $("input[name='userName']").val(),
-                password: $("input[name='passWord']").val(),
+                userName: $("input[name='userName']").val(),
+                passWord: $("input[name='passWord']").val(),
                 geetest_challenge: result.geetest_challenge,
                 geetest_validate: result.geetest_validate,
                 geetest_seccode: result.geetest_seccode
             }
 
-            httpService.ajax('/login', param).then(function (res) {
+            httpService.postAjax('/login/login', param).then(function (res) {
+                debugger
                 if (res.result) {
                     $('.login-tips').html(res.message);
                     location.href = res.data;
