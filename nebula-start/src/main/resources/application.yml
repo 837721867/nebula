@@ -1,0 +1,41 @@
+# 项目信息
+nebula:
+  name: nebula
+  version: 1.0.0
+  copyrightYear: 2020
+  # 获取ip地址开关
+  addressEnabled: true
+
+# 服务配置
+server:
+  port: 8088
+  servlet:
+    context-path: /nebula
+    # session有效时长1小时
+    session:
+      timeout: PT1H
+
+#spring配置
+spring:
+  # 多配置源
+  profiles:
+    active: test
+  # 模板引擎
+  thymeleaf:
+    cache: false
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+    #严格执行H5标准
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+  # 启动热部署
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+      # 监听目录
+      additional-paths: src/main/java, src/main/resources
+

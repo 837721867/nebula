@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.0.RELEASE</version>
+        <version>2.4.0</version>
     </parent>
 
     <groupId>com.nebula</groupId>
@@ -17,8 +17,9 @@
     <modules>
         <module>nebula-common</module>
         <module>nebula-login</module>
-        <module>nebula-web</module>
+        <module>nebula-start</module>
         <module>nebula-business</module>
+        <module>nebula-admin</module>
     </modules>
 
     <properties>
@@ -27,14 +28,15 @@
         <!-- module.version -->
         <nebula-common.version>0.0.1-SNAPSHOT</nebula-common.version>
         <nebula-login.version>0.0.1-SNAPSHOT</nebula-login.version>
-        <nebula-web.version>0.0.1-SNAPSHOT</nebula-web.version>
+        <nebula-start.version>0.0.1-SNAPSHOT</nebula-start.version>
         <nebula-business.version>0.0.1-SNAPSHOT</nebula-business.version>
+        <nebula-admin.version>0.0.1-SNAPSHOT</nebula-admin.version>
         <!-- other.version -->
         <java.version>1.8</java.version>
-        <gson.version>2.8.5</gson.version>
-        <lombok.version>1.18.10</lombok.version>
-        <mysql.version>8.0.15</mysql.version>
-        <druid.version>1.1.20</druid.version>
+        <gson.version>2.8.6</gson.version>
+        <lombok.version>1.18.16</lombok.version>
+        <mysql.version>8.0.22</mysql.version>
+        <druid.version>1.2.3</druid.version>
     </properties>
 
     <dependencies>
@@ -110,9 +112,14 @@
         </dependency>
 
         <!-- slf4j+logback slf4j随starter默认 -->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-classic</artifactId>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
         </dependency>
 
     </dependencies>
