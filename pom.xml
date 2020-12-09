@@ -112,10 +112,10 @@
         </dependency>
 
         <!-- slf4j+logback slf4j随starter默认 -->
-<!--        <dependency>-->
-<!--            <groupId>ch.qos.logback</groupId>-->
-<!--            <artifactId>logback-classic</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
