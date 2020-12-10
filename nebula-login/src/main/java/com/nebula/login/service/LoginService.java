@@ -1,6 +1,6 @@
 package com.nebula.login.service;
 
-import com.nebula.common.main.entity.UserInfo;
+import com.nebula.admin.userManage.entity.UserInfo;
 import com.nebula.login.repository.LoginRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

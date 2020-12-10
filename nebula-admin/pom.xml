@@ -15,6 +15,12 @@
 
 
 	<dependencies>
+		<!-- common -->
+		<dependency>
+			<groupId>com.nebula</groupId>
+			<artifactId>nebula-common</artifactId>
+			<version>${nebula-common.version}</version>
+		</dependency>
 
 	</dependencies>
 

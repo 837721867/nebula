@@ -1,7 +1,14 @@
 package com.nebula.admin.roleManage.entity;
 
 import com.nebula.admin.menuManage.entity.MenuInfo;
+import com.nebula.common.base.entity.BaseEntity;
+import lombok.Data;
+import org.hibernate.annotations.Table;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import java.util.List;
 
 /**

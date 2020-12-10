@@ -1,7 +1,7 @@
 package com.nebula.login.repository;
 
+import com.nebula.admin.userManage.entity.UserInfo;
 import com.nebula.common.base.repository.BaseRepository;
-import com.nebula.common.main.entity.UserInfo;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

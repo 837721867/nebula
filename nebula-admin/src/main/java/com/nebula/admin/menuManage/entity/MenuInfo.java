@@ -1,5 +1,12 @@
 package com.nebula.admin.menuManage.entity;
 
+import com.nebula.common.base.entity.BaseEntity;
+import lombok.Data;
+
+import org.hibernate.annotations.Table;
+
+
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -9,7 +16,7 @@ import java.util.List;
 @Data
 @Entity(name = "sys_menu")
 @Table(appliesTo = "sys_menu", comment = "菜单表")
-public class MenuInfo extends BaseEntity{
+public class MenuInfo extends BaseEntity {
 
     /** 菜单编号 */
     @Column(columnDefinition = " varchar(6) comment '菜单编码' ")

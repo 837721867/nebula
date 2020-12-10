@@ -22,7 +22,7 @@
             <artifactId>nebula-login</artifactId>
             <version>${nebula-login.version}</version>
         </dependency>
-        <!-- login -->
+        <!-- admin -->
         <dependency>
             <groupId>com.nebula</groupId>
             <artifactId>nebula-admin</artifactId>

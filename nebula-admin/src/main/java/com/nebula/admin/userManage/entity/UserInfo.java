@@ -1,6 +1,14 @@
 package com.nebula.admin.userManage.entity;
 
+import com.nebula.common.base.entity.BaseEntity;
+import lombok.Data;
+import org.hibernate.annotations.Table;
+
 import javax.management.relation.RoleInfo;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * 描述：用户实体
