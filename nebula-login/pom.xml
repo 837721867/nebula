@@ -20,11 +20,11 @@
             <artifactId>nebula-common</artifactId>
             <version>${nebula-common.version}</version>
         </dependency>
-        <!-- business -->
+        <!-- admin -->
         <dependency>
             <groupId>com.nebula</groupId>
-            <artifactId>nebula-business</artifactId>
-            <version>${nebula-business.version}</version>
+            <artifactId>nebula-admin</artifactId>
+            <version>${nebula-admin.version}</version>
         </dependency>
     </dependencies>
 

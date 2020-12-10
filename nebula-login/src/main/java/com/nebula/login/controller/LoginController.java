@@ -1,5 +1,6 @@
 package com.nebula.login.controller;
 
+import com.nebula.common.base.controller.BaseController;
 import com.nebula.common.geetest.VerifyLoginServlet;
 import com.nebula.common.main.entity.UserInfo;
 import com.nebula.common.util.ResultUtil;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import java.io.IOException;
  * 作者：Marionette
  */
 @Controller
-public class LoginController {
+public class LoginController extends BaseController {
 
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
@@ -38,8 +38,6 @@ public class LoginController {
     @RequestMapping("/login/login")
     public ResultUtil login(String userName, String passWord) throws IOException {
         VerifyLoginServlet ver = new VerifyLoginServlet();
-//        String phone = request.getParameter("username");
-//        String passWord = request.getParameter("password");
         if (!ver.doubleVerify(request).get("status").getAsBoolean()) {
             return ResultUtil.fail("行为验证失败");
         }
@@ -54,7 +52,7 @@ public class LoginController {
         }
         request.getSession().setAttribute("userInfo", userInfo);
         logger.info("用户:" + userInfo.getName() + "登录成功");
-        return ResultUtil.success("main/main", "登录成功");
+        return ResultUtil.success("index/index", "登录成功");
     }
 
 }

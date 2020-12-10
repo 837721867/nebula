@@ -54,7 +54,7 @@ layui.use(['jquery', 'layer'], function () {
                 debugger
                 if (res.result) {
                     $('.login-tips').html(res.message);
-                    location.href = res.data;
+                    location.href = rootUrl + res.data;
                 } else {
                     captchaObj.reset();
                     $('.login-tips').html(res.message);

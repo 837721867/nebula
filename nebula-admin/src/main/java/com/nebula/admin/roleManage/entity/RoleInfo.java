@@ -1,11 +1,8 @@
-package com.nebula.common.main.entity;
+package com.nebula.admin.roleManage.entity;
 
-import com.nebula.common.base.entity.BaseEntity;
-import lombok.Data;
-import org.hibernate.annotations.Table;
+import com.nebula.admin.menuManage.entity.MenuInfo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import java.util.List;
 
 /**
  * 描述：权限角色实体
@@ -28,4 +25,7 @@ public class RoleInfo extends BaseEntity {
     @Column(nullable = false, columnDefinition = " tinyint(1) default '1' comment '角色类型 0：管理员 1：普通用户' ")
     private String type;
 
+    @ManyToMany
+    @JoinTable
+    private List<MenuInfo> sys_menu;
 }

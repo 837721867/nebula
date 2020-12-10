@@ -1,10 +1,10 @@
-package com.nebula.admin;
+package com.nebula.nebulaadmin;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AdminApplicationTests {
+class NebulaAdminApplicationTests {
 
 	@Test
 	void contextLoads() {
