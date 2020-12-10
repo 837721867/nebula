@@ -52,7 +52,7 @@ public class LoginController extends BaseController {
         }
         request.getSession().setAttribute("userInfo", userInfo);
         logger.info("用户:" + userInfo.getName() + "登录成功");
-        return ResultUtil.success("index/index", "登录成功");
+        return ResultUtil.success("/index", "登录成功");
     }
 
 }

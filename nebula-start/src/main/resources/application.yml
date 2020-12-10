@@ -27,7 +27,7 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
     #严格执行H5标准
-    mode: LEGACYHTML5
+    mode: HTML
     encoding: UTF-8
     servlet:
       content-type: text/html

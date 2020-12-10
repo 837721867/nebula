@@ -1,0 +1,1 @@
+INSERT INTO sys_user (id, createTime, creator, disables, modifier, modifyTime, loginName, passWord, code, name, phone, role_id ) SELECT '1', now(), 'admin', '0', 'admin', now(), 'admin', '123456', '000001', '管理员', '15620694756', '1' FROM DUAL WHERE NOT EXISTS ( SELECT 1 FROM sys_user WHERE id = '1' );

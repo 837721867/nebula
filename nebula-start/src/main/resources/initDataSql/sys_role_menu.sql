@@ -1,0 +1,4 @@
+INSERT INTO sys_role_menu (sys_role_id, sys_menu_id) SELECT '1', '1' FROM DUAL WHERE NOT EXISTS ( SELECT 1 FROM sys_role_menu WHERE sys_role_id = '1' AND sys_menu_id = '1');
+INSERT INTO sys_role_menu (sys_role_id, sys_menu_id) SELECT '1', '2' FROM DUAL WHERE NOT EXISTS ( SELECT 1 FROM sys_role_menu WHERE sys_role_id = '1' AND sys_menu_id = '2');
+INSERT INTO sys_role_menu (sys_role_id, sys_menu_id) SELECT '1', '3' FROM DUAL WHERE NOT EXISTS ( SELECT 1 FROM sys_role_menu WHERE sys_role_id = '1' AND sys_menu_id = '3');
+INSERT INTO sys_role_menu (sys_role_id, sys_menu_id) SELECT '1', '4' FROM DUAL WHERE NOT EXISTS ( SELECT 1 FROM sys_role_menu WHERE sys_role_id = '1' AND sys_menu_id = '4');

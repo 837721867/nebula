@@ -2,6 +2,7 @@ package com.nebula.common.base.entity;
 
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -20,7 +21,8 @@ public class BaseEntity implements Serializable {
     private static final long serialVersionUID = 7550792210665830400L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(columnDefinition = " varchar(50) comment '主键id' ")
     private String id;
 
@@ -28,14 +30,14 @@ public class BaseEntity implements Serializable {
     private String creator;
 
     @CreatedDate
-    @Column(columnDefinition = " datetime comment '创建时间' ")
+    @Column(updatable = false, nullable = false, columnDefinition = " datetime comment '创建时间' ")
     private Date createTime;
 
     @Column(columnDefinition = " varchar(10) comment '修改者' ")
     private String modifier;
 
     @LastModifiedDate
-    @Column(columnDefinition = " datetime comment '修改时间' ")
+    @Column(nullable = false, columnDefinition = " datetime comment '修改时间' ")
     private Date modifyTime;
 
     @Column(nullable = false, columnDefinition = " tinyint(1) default '0' comment '禁用 0：正常 1：禁用' ")

@@ -31,8 +31,8 @@ public class MenuInfo extends BaseEntity {
     private String address;
 
     /** 有无界面 0：无 1：有 */
-    @Column(nullable = false, columnDefinition = " tinyint(1) default '0' comment '有无界面 0：无 1：有' ")
-    private String type;
+    @Column(nullable = false, columnDefinition = " integer default '0' comment '有无界面 0：无 1：有' ")
+    private Integer type;
 
     /** 层级 */
     @Column(nullable = false, columnDefinition = " integer default '0' comment '层级' ")

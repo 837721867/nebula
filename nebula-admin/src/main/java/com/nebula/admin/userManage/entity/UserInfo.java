@@ -1,14 +1,10 @@
 package com.nebula.admin.userManage.entity;
 
+import com.nebula.admin.roleManage.entity.RoleInfo;
 import com.nebula.common.base.entity.BaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
-
-import javax.management.relation.RoleInfo;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * 描述：用户实体
@@ -40,7 +36,7 @@ public class UserInfo extends BaseEntity {
     private String phone;
 
     /** 所属权限 */
-    @ManyToOne(targetEntity = RoleInfo.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = RoleInfo.class, cascade = CascadeType.REFRESH)
     @JoinColumn(nullable = false, columnDefinition = " varchar(50) comment '所属权限' ")
     private RoleInfo role;
 }

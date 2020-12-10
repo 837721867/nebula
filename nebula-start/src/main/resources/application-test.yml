@@ -35,9 +35,10 @@ spring:
     initialization-mode: always
     # 初始化数据sql文件位置
     data:
-      - classpath:initDataSql/role.sql
-      - classpath:initDataSql/user.sql
-      - classpath:initDataSql/menu.sql
+      - classpath:initDataSql/sys_role.sql
+      - classpath:initDataSql/sys_user.sql
+      - classpath:initDataSql/sys_menu.sql
+      - classpath:initDataSql/sys_role_menu.sql
 
     stat-view-servlet:
       userName: admin
@@ -61,7 +62,7 @@ spring:
       ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    show-sql: true
+    show-sql: false
     open-in-view: false
     database: mysql
     generate-ddl: false
