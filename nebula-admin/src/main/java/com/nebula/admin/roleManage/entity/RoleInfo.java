@@ -3,7 +3,8 @@ package com.nebula.admin.roleManage.entity;
 import com.nebula.admin.menuManage.entity.MenuInfo;
 import com.nebula.admin.userManage.entity.UserInfo;
 import com.nebula.common.base.entity.BaseEntity;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Table;
 import javax.persistence.*;
 import java.util.List;
@@ -12,10 +13,13 @@ import java.util.List;
  * 描述：权限角色实体
  * 作者：Marionette
  */
-@Data
+@Getter
+@Setter
 @Entity(name = "sys_role")
 @Table(appliesTo = "sys_role", comment = "用户权限表")
 public class RoleInfo extends BaseEntity {
+
+    private static final long serialVersionUID = 6455990565417950542L;
 
     /**
      * 角色编号

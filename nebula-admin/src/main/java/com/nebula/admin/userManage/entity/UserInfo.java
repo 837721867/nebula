@@ -2,7 +2,8 @@ package com.nebula.admin.userManage.entity;
 
 import com.nebula.admin.roleManage.entity.RoleInfo;
 import com.nebula.common.base.entity.BaseEntity;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Table;
 import javax.persistence.*;
 
@@ -10,10 +11,13 @@ import javax.persistence.*;
  * 描述：用户实体
  * 作者：Marionette
  */
-@Data
+@Getter
+@Setter
 @Entity(name = "sys_user")
 @Table(appliesTo = "sys_user", comment = "用户信息表")
 public class UserInfo extends BaseEntity {
+
+    private static final long serialVersionUID = -8548305901170981510L;
 
     /** 登录名 */
     @Column(columnDefinition = " varchar(10) comment '登录名' ")

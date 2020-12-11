@@ -18,8 +18,6 @@ import java.util.Date;
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 7550792210665830400L;
-
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")

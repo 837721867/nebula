@@ -1,8 +1,8 @@
 package com.nebula.admin.menuManage.entity;
 
 import com.nebula.common.base.entity.BaseEntity;
-import lombok.Data;
-
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Table;
 
 
@@ -13,10 +13,13 @@ import java.util.List;
  * 描述：主界面大菜单
  * 作者：Marionette
  */
-@Data
+@Getter
+@Setter
 @Entity(name = "sys_menu")
 @Table(appliesTo = "sys_menu", comment = "菜单表")
 public class MenuInfo extends BaseEntity {
+
+    private static final long serialVersionUID = 4678418277688671684L;
 
     /** 菜单编号 */
     @Column(columnDefinition = " varchar(6) comment '菜单编码' ")
@@ -25,6 +28,14 @@ public class MenuInfo extends BaseEntity {
     /** 菜单名称 */
     @Column(columnDefinition = " varchar(10) comment '菜单名称' ")
     private String name;
+
+    /** 模块名称 */
+    @Column(columnDefinition = " varchar(10) comment '模块名称' ")
+    private String mode;
+
+    /** 图标class */
+    @Column(columnDefinition = " varchar(50) comment '图标class' ")
+    private String icon;
 
     /** 界面位置 */
     @Column(columnDefinition = " varchar(100) comment '界面位置' ")
@@ -42,8 +53,12 @@ public class MenuInfo extends BaseEntity {
     @Column(columnDefinition = " integer comment '排序' ")
     private Integer num;
 
+    /** 子菜单列表 */
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "parent")
+    private List<MenuInfo> details;
+
     /** 父节点ID */
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = MenuInfo.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(columnDefinition = " varchar(50) comment '父节点ID' ")
-    private List<MenuInfo> parent;
+    private MenuInfo parent;
 }
