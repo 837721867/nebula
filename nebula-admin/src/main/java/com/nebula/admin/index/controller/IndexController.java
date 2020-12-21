@@ -39,6 +39,6 @@ public class IndexController extends BaseController {
      */
     @RequestMapping("/home/console")
     public String console(){
-        return "layuiAdmin/home/console";
+        return "home/homePage";
     }
 }
