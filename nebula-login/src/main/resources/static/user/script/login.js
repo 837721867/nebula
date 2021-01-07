@@ -1,8 +1,14 @@
-layui.use(['jquery', 'layer'], function () {
+layui.config({
+    base: '/nebula/' //静态资源所在路径
+}).extend({
+    index: 'lib/index' //主入口模块
+}).use(['index', 'jquery', 'layer'], function () {
 
     /************************************************* 定义 **************************************************************/
     let $ = layui.jquery,
-        layer = layui.layer;
+        layer = layui.layer,
+        admin = layui.admin,
+        setter = layui.setter;
 
     /************************************************* 绑定 **************************************************************/
     /** 加载极验 */
@@ -51,10 +57,11 @@ layui.use(['jquery', 'layer'], function () {
             }
 
             httpService.postAjax('/login/login', param).then(function (res) {
-                debugger
-                if (res.result) {
+                if (0 == res.code) {
                     $('.login-tips').html(res.message);
-                    location.href = rootUrl + res.data;
+                    setTimeout(function(){
+                        location.href = rootUrl + res.data;
+                    },600);
                 } else {
                     captchaObj.reset();
                     $('.login-tips').html(res.message);
@@ -95,4 +102,5 @@ layui.use(['jquery', 'layer'], function () {
             return true;
         }
     }
+
 })

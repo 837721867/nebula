@@ -1,7 +1,7 @@
 package com.nebula.login.service;
 
-import com.nebula.admin.userManage.entity.UserInfo;
-import com.nebula.login.repository.LoginRepository;
+import com.nebula.common.admin.userManage.entity.UserInfo;
+import com.nebula.common.admin.userManage.repository.UserInfoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +15,11 @@ import javax.annotation.Resource;
 @Transactional(rollbackFor = Exception.class)
 public class LoginService {
 
-    @Resource(name = "loginRepository")
-    private LoginRepository loginRepository;
+    @Resource(name = "userInfoRepository")
+    private UserInfoRepository userInfoRepository;
 
     public UserInfo getUserByPhone(String phone) {
-        return loginRepository.getUserByPhone(phone);
+        return userInfoRepository.getUserByPhone(phone);
     }
 
 }

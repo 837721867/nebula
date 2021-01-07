@@ -19,7 +19,6 @@
         <module>nebula-login</module>
         <module>nebula-start</module>
         <module>nebula-business</module>
-        <module>nebula-admin</module>
     </modules>
 
     <properties>
@@ -30,7 +29,6 @@
         <nebula-login.version>0.0.1-SNAPSHOT</nebula-login.version>
         <nebula-start.version>0.0.1-SNAPSHOT</nebula-start.version>
         <nebula-business.version>0.0.1-SNAPSHOT</nebula-business.version>
-        <nebula-admin.version>0.0.1-SNAPSHOT</nebula-admin.version>
         <!-- other.version -->
         <java.version>1.8</java.version>
         <gson.version>2.8.6</gson.version>
@@ -123,6 +121,7 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.10</version>
         </dependency>
+
 
 
 

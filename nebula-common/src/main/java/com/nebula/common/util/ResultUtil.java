@@ -1,9 +1,7 @@
 package com.nebula.common.util;
 
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 import java.io.Serializable;
 
 /**
@@ -11,14 +9,13 @@ import java.io.Serializable;
  * 作者：Marionette
  * @param <T>
  */
-@Setter
-@Getter
+@Data
 public class ResultUtil<T> implements Serializable {
 
     private static final long serialVersionUID = 7206990865925659614L;
 
-    /** 返回结果状态 用作判断 */
-    private boolean result;
+    /** 返回的代码，0表示成功，其他表示失败 */
+    private int code;
 
     /** 返回数据封装 */
     private T data;
@@ -26,59 +23,116 @@ public class ResultUtil<T> implements Serializable {
     /** 返回结果信息 */
     private String message;
 
+    /**
+     * 构造函数
+     * @param resultStatusEnum
+     * @param data
+     */
+    public ResultUtil(ResultStatusEnum resultStatusEnum, T data){
+        this.code = resultStatusEnum.getCode();
+        this.message = resultStatusEnum.getMessage();
+        this.data = data;
+    }
 
     /**
      * 构造函数
-     * @param result
+     * @param resultStatusEnum
+     * @param data
+     * @param message
      */
-    public ResultUtil(boolean result) {
-        this.result = result;
-    }
-
-    public ResultUtil(boolean result, String message){
-        this.result = result;
-        this.message = message;
-    }
-
-    public ResultUtil(boolean result, T data, String message){
-        this.result = result;
+    public ResultUtil(ResultStatusEnum resultStatusEnum, T data, String message){
+        this.code = resultStatusEnum.getCode();
+        this.message = resultStatusEnum.getMessage();
         this.data = data;
         this.message = message;
     }
 
+    /**
+     * 构造函数
+     * @param code
+     * @param data
+     * @param message
+     */
+    public ResultUtil(int code, T data, String message){
+        this.code = code;
+        this.data = data;
+        this.message = message;
+    }
 
     /**
-     * 成功 静态方法
+     * 构造函数
+     * @param code
+     * @param message
+     */
+    public ResultUtil(int code, String message){
+        this(code, null, message);
+    }
+
+    /**
+     * 构造函数
+     * @param resultStatusEnum
+     */
+    public ResultUtil(ResultStatusEnum resultStatusEnum){
+        this(resultStatusEnum, null);
+    }
+
+
+    /**
+     * 静态方法
      * @return
      */
     public static ResultUtil success(){
-        return new ResultUtil(true);
+        return new ResultUtil(ResultStatusEnum.OK);
     }
-
-    public static ResultUtil success(String message){
-        return new ResultUtil(true, message);
-    }
-
-    public static ResultUtil success(Object data, String message){
-        return new ResultUtil(true, data, message);
-    }
-
 
     /**
-     * 失败静态方法
+     * 静态方法
      * @return
      */
-    public static ResultUtil fail(){
-        return new ResultUtil(false);
+    public static ResultUtil success(Object data){
+        return new ResultUtil(ResultStatusEnum.OK, data);
     }
 
-    public static ResultUtil fail(String message){
-        return new ResultUtil(false, message);
+    /**
+     * 静态方法
+     * @return
+     */
+    public static ResultUtil success(Object data, String message){
+        return new ResultUtil(ResultStatusEnum.OK, data, message);
     }
 
-    public static ResultUtil fail(Object data, String message){
-        return new ResultUtil(false, data, message);
+    /**
+     * 静态方法
+     * @return
+     */
+    public static ResultUtil fail(int code, String message){
+        return new ResultUtil(code, message);
     }
+
+    /**
+     * 静态方法
+     * @return
+     */
+    public static ResultUtil fail(ResultStatusEnum resultStatusEnum){
+        return new ResultUtil(resultStatusEnum);
+    }
+
+    /**
+     * 静态方法
+     * @return
+     */
+    public static ResultUtil fail(ResultStatusEnum resultStatusEnum, String message){
+        return new ResultUtil(resultStatusEnum, null, message);
+    }
+
+    /**
+     * 静态方法
+     * @return
+     */
+    public static ResultUtil fail(ResultStatusEnum resultStatusEnum, Object data, String message){
+        return new ResultUtil(resultStatusEnum, data, message);
+    }
+
 
 
 }
