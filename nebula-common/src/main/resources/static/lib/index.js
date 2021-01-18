@@ -41,13 +41,13 @@ layui.extend({
       //如果未在选项卡中匹配到，则追加选项卡
       if(!matchTo){
         //延迟修复 Firefox 空白问题
-        setTimeout(function(){
+        // setTimeout(function(){
           $(APP_BODY).append([
             '<div class="layadmin-tabsbody-item layui-show">'
               ,'<iframe src="'+ url +'" frameborder="0" class="layadmin-iframe"></iframe>'
             ,'</div>'
           ].join(''));
-        }, 10);
+        // }, 10);
         
         tabsPage.index = tabs.length;
         element.tabAdd(FILTER_TAB_TBAS, {
